@@ -27,19 +27,19 @@ namespace Connect.Api.Controllers
             return Ok(lessonViewModel);
         }
 
-        public IHttpActionResult Post(LessonViewModel lessonViewModel)
+        public IHttpActionResult Post(LessonViewModel lesson)
         {
-            var lesson = _mapper.Map<Lesson>(lessonViewModel);
-            _lessonService.Create(lesson);
+            var lessonDomain = _mapper.Map<Lesson>(lesson);
+            _lessonService.Create(lessonDomain);
 
             return Ok();
         }
 
-        public IHttpActionResult Put(int id, LessonViewModel lessonViewModel)
+        public IHttpActionResult Put(int id, LessonViewModel lesson)
         {
-            var lesson = _mapper.Map<Lesson>(lessonViewModel);
+            var lessonDomain = _mapper.Map<Lesson>(lesson);
             lesson.Id = id;
-            _lessonService.Update(lesson);
+            _lessonService.Update(lessonDomain);
 
             return Ok();
         }

@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Autofac;
 using Autofac.Integration.WebApi;
 using AutoMapper;
@@ -22,6 +23,8 @@ namespace Connect.Api
             builder.RegisterInstance(cfg.CreateMapper()).As<IMapper>();
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            config.EnableCors();
 
             // Web API routes
             config.MapHttpAttributeRoutes();

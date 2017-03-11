@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Results;
 using AutoMapper;
 using Connect.Api.Models;
@@ -8,6 +9,7 @@ using Connect.Domain.Services;
 
 namespace Connect.Api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class LessonController : ApiController
     {
         private readonly ILessonService _lessonService;

@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-using Connect.Api.Models;
+using Connect.Api.Models.Display;
 
 namespace Connect.Api.Controllers
 {
@@ -7,7 +7,7 @@ namespace Connect.Api.Controllers
     {
         public IHttpActionResult Get(int id)
         {
-            var user = new UserViewModel
+            var user = new UserDisplayContract
             {
                 Name = "John",
                 Surname = "Dou",
@@ -15,6 +15,11 @@ namespace Connect.Api.Controllers
             };
 
             return Ok(user);
+        }
+
+        public IHttpActionResult Put(int id, )
+        {
+            
         }
     }
 }

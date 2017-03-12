@@ -4,7 +4,7 @@ namespace Connect.Domain.Services
 {
     public interface ILessonService
     {
-        void Create(Lesson lesson);
+        int Create(Lesson lesson);
 
         void Update(Lesson lesson);
 

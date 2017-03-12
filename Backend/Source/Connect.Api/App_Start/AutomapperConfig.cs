@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
+﻿using AutoMapper;
 using Connect.Api.Infrastructure.Automapper;
 using Connect.Infrastructure.Automapper;
 
-namespace Connect.Api.App_Start
+namespace Connect.Api
 {
     public static class AutomapperConfig
     {

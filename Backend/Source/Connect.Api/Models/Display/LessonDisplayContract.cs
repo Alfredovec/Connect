@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Newtonsoft.Json;
 
-namespace Connect.Api.Models
+namespace Connect.Api.Models.Display
 {
-    public class LessonViewModel
+    public class LessonDisplayContract
     {
-        [JsonIgnore]
         public int Id { get; set; }
 
         public string Subject { get; set; }

@@ -18,11 +18,13 @@ namespace Connect.Services
             _mapper = mapper;
         }
 
-        public void Create(Lesson lesson)
+        public int Create(Lesson lesson)
         {
             var lessonEntity = _mapper.Map<LessonEntity>(lesson);
             _lessonRepository.Add(lessonEntity);
             _lessonRepository.Save();
+
+            return lessonEntity.Id;
         }
 
         public void Update(Lesson lesson)

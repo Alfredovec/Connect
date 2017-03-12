@@ -4,7 +4,6 @@ using System.Web.Http.Cors;
 using Autofac;
 using Autofac.Integration.WebApi;
 using AutoMapper;
-using Connect.Api.App_Start;
 using Connect.Infrastructure.DI;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.Application;

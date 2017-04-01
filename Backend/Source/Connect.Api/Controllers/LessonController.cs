@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Results;
+using System.Web.Services.Description;
 using AutoMapper;
 using Connect.Api.Models.Display;
 using Connect.Api.Models.Update;

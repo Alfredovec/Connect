@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\Source\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,11 +43,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\CrudService.cs" />
+    <Compile Include="Abstract\ICreate.cs" />
+    <Compile Include="Abstract\ICrudService.cs" />
+    <Compile Include="Abstract\IFind.cs" />
+    <Compile Include="Abstract\IUpdate.cs" />
+    <Compile Include="Exceptions\ConnectException.cs" />
     <Compile Include="Models\Lesson.cs" />
+    <Compile Include="Models\Rate.cs" />
+    <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ILessonService.cs" />
+    <Compile Include="Services\IRateService.cs" />
+    <Compile Include="Services\ITopicService.cs" />
+    <Compile Include="Services\IUserService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Source\Connect.Data\Connect.Data.csproj">
+      <Project>{9DFA9314-F5EA-42DC-9CE4-7E2F2DF1A64B}</Project>
+      <Name>Connect.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

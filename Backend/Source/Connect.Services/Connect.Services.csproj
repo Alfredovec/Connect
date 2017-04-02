@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="LessonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RateService.cs" />
+    <Compile Include="TopicService.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Connect.Domain\Connect.Domain.csproj">

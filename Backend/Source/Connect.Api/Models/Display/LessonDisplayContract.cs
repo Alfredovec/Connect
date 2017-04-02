@@ -9,6 +9,6 @@ namespace Connect.Api.Models.Display
 
         public string Subject { get; set; }
 
-        public DateTime Creared { get; set; }
+        public DateTimeOffset Creared { get; set; }
     }
 }

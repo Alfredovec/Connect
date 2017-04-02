@@ -9,8 +9,17 @@ namespace Connect.Api.Infrastructure.Automapper
     {
         public AutomapperWebProfile()
         {
-            CreateMap<Lesson, LessonDisplayContract>().ReverseMap();
-            CreateMap<Lesson, LessonUpdateContract>().ReverseMap();
+            CreateMap<Lesson, LessonDisplayContract>();
+            CreateMap<LessonUpdateContract, Lesson>();
+
+            CreateMap<Rate, RateDisplayContract>().ReverseMap();
+            CreateMap<RateUpdateContract, Rate>();
+
+            CreateMap<Topic, TopicDisplayContract>();
+            CreateMap<Topic, TopicNestedDisplayContract>();
+
+            CreateMap<User, UserDisplayContract>();
+            CreateMap<UserUpdateContract, User>();
         }
     }
 }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
+using Connect.Domain.Abstract;
 using Connect.Domain.Services;
 using Connect.Services;
 
@@ -16,6 +12,14 @@ namespace Connect.Infrastructure.DI
             base.Load(builder);
 
             builder.RegisterType<LessonService>().As<ILessonService>();
+            builder.RegisterType<RateService>().As<IRateService>();
+            builder.RegisterType<TopicService>().As<ITopicService>();
+            builder.RegisterType<UserService>().As<IUserService>();
+
+            builder
+                .RegisterGeneric(typeof(CrudService<,>))
+                .As(typeof(ICrudService<>))
+                .InstancePerDependency();
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace Connect.Api.Models.Display
 {
@@ -11,6 +8,8 @@ namespace Connect.Api.Models.Display
 
         public string Name { get; set; }
 
-        public bool HasChildren { get; set; }
+        public TopicNestedDisplayContract Parent { get; set; }
+
+        public IEnumerable<TopicNestedDisplayContract> Children { get; set; }
     }
 }

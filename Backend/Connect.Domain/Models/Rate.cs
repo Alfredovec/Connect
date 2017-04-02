@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Connect.Api.Models.Display
+namespace Connect.Domain.Models
 {
-    public class RateDisplayModel
+    public class Rate
     {
         public int Id { get; set; }
 

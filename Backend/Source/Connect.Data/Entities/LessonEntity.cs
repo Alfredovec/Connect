@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Connect.Data.Entities
 {
-    [Table("Lesson")]
-    public class LessonEntity
+    public class LessonEntity : BaseEntity
     {
         public int Id { get; set; }
 
-        public string Subject { get; set; }
-        
-        public DateTime Creared { get; set; }
+        // public int UserMasterId { get; set; }
+
+        public int UserApprenticeId { get; set; }
+
+        public int TopicId { get; set; }
+
+        [ForeignKey("UserMasterId")]
+        public virtual UserEntity UserMaster { get; set; }
+
+        [ForeignKey("UserApprenticeId")]
+        public virtual UserEntity UserApprentice { get; set; }
+
+        [ForeignKey("TopicId")]
+        public virtual TopicEntity Topic { get; set; }
     }
 }

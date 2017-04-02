@@ -5,6 +5,7 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using AutoMapper;
 using Connect.Infrastructure.DI;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.Application;
 
@@ -44,6 +45,7 @@ namespace Connect.Api
 
             config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
         }
     }
 }

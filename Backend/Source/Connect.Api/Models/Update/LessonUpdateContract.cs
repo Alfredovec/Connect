@@ -4,8 +4,10 @@ namespace Connect.Api.Models.Update
 {
     public class LessonUpdateContract
     {
-        public string Subject { get; set; }
+        public int UserMasterId { get; set; }
 
-        public DateTime Creared { get; set; }
+        public int UserApprenticeId { get; set; }
+
+        public int SubjectId { get; set; }
     }
 }

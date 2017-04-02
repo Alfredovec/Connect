@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Connect.Domain.Models
 {
@@ -10,8 +6,12 @@ namespace Connect.Domain.Models
     {
         public int Id { get; set; }
 
-        public string Subject { get; set; }
+        public int UserMasterId { get; set; }
 
-        public DateTime Creared { get; set; }
+        public int UserApprenticeId { get; set; }
+
+        public int SubjectId { get; set; }
+
+        public DateTimeOffset Created { get; set; }
     }
 }

@@ -1,13 +1,7 @@
-﻿using Connect.Domain.Models;
+﻿using Connect.Domain.Abstract;
+using Connect.Domain.Models;
 
 namespace Connect.Domain.Services
 {
-    public interface ILessonService
-    {
-        int Create(Lesson lesson);
-
-        void Update(Lesson lesson);
-
-        Lesson Find(int id);
-    }
+    public interface ILessonService : ICrudService<Lesson> { }
 }

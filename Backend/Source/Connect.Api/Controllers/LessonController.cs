@@ -1,9 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Web.Http.Results;
-using System.Web.Services.Description;
 using AutoMapper;
 using Connect.Api.Models.Display;
 using Connect.Api.Models.Update;
@@ -30,25 +26,25 @@ namespace Connect.Api.Controllers
             var lessonViewModel = _mapper.Map<LessonDisplayContract>(lesson);
 
             return Ok(lessonViewModel);
-            
         }
 
         public IHttpActionResult Post(LessonUpdateContract lesson)
         {
             var lessonDomain = _mapper.Map<Lesson>(lesson);
-            var id = _lessonService.Create(lessonDomain);
+            var createdLesson = _lessonService.Create(lessonDomain);
 
-            return Ok(new { Id = id });
+            return Created($"api/lessons/{createdLesson.Id}", createdLesson);
         }
-
-
-        public IHttpActionResult Put(int id, LessonDisplayContract lesson)
+        
+        public IHttpActionResult Put(int id, LessonUpdateContract lesson)
         {
             var lessonDomain = _mapper.Map<Lesson>(lesson);
-            lesson.Id = id;
-            _lessonService.Update(lessonDomain);
+            lessonDomain.Id = id;
 
-            return Ok();
+            var updatedLesson =_lessonService.Update(lessonDomain);
+            var updatedLessonDisplay = _mapper.Map<LessonDisplayContract>(updatedLesson);
+
+            return Ok(updatedLessonDisplay);
         }
     }
 }

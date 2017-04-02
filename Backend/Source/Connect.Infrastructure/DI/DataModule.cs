@@ -17,6 +17,9 @@ namespace Connect.Infrastructure.DI
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<LessonRepository>().As<ILessonRepository>();
+            builder.RegisterType<RateRepository>().As<IRateRepository>();
+            builder.RegisterType<TopicRepository>().As<ITopicRepository>();
+            builder.RegisterType<UserRepository>().As<IUserRepository>();
         }
     }
 }

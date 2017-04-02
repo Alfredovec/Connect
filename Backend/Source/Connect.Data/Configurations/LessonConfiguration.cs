@@ -7,6 +7,7 @@ namespace Connect.Data.Configurations
     {
         public LessonConfiguration()
         {
+            ToTable("Lesson");
             HasKey(l => l.Id);
         }
     }

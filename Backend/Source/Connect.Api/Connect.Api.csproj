@@ -140,11 +140,13 @@
     </Compile>
     <Compile Include="Infrastructure\Automapper\AutomapperWebProfile.cs" />
     <Compile Include="Models\Display\LessonDisplayContract.cs" />
-    <Compile Include="Models\Display\RateDisplayModel.cs" />
+    <Compile Include="Models\Display\RateDisplayContract.cs" />
     <Compile Include="Models\Display\TopicDisplayContract.cs" />
+    <Compile Include="Models\Display\TopicNestedDisplayContract.cs" />
     <Compile Include="Models\Display\UserDisplayContract.cs" />
     <Compile Include="Models\Update\LessonUpdateContract.cs" />
-    <Compile Include="Models\Update\RateUpdateModel.cs" />
+    <Compile Include="Models\Update\RateUpdateContract.cs" />
+    <Compile Include="Models\Update\TopicUpdateContract.cs" />
     <Compile Include="Models\Update\UserUpdateContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Swagger\LowercaseDocumentFilter.cs" />
@@ -184,7 +186,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63469</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63469/</IISUrl>
+          <IISUrl>http://localhost:63470/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

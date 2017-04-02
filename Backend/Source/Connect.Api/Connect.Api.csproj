@@ -142,7 +142,7 @@
     <Compile Include="Models\Display\LessonDisplayContract.cs" />
     <Compile Include="Models\Display\RateDisplayContract.cs" />
     <Compile Include="Models\Display\TopicDisplayContract.cs" />
-    <Compile Include="Models\Display\TopicNestedDisplayContract.cs" />
+    <Compile Include="Models\Display\TopicBasicDisplayContract.cs" />
     <Compile Include="Models\Display\UserDisplayContract.cs" />
     <Compile Include="Models\Update\LessonUpdateContract.cs" />
     <Compile Include="Models\Update\RateUpdateContract.cs" />

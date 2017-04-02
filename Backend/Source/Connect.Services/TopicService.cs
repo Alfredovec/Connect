@@ -26,7 +26,7 @@ namespace Connect.Services
         /// <inheritdoc />
         public IEnumerable<Topic> GetSubTopics(int parentTopicId)
         {
-            var subTopicsEntities = _topicRepository.Get(t => t.ParentId == parentTopicId).AsEnumerable();
+            var subTopicsEntities = _topicRepository.Get(t => t.ParentId == parentTopicId).ToList();
             var subTopics = _mapper.Map<IEnumerable<Topic>>(subTopicsEntities);
 
             return subTopics;

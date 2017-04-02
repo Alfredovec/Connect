@@ -16,7 +16,7 @@ namespace Connect.Api.Infrastructure.Automapper
             CreateMap<RateUpdateContract, Rate>();
 
             CreateMap<Topic, TopicDisplayContract>();
-            CreateMap<Topic, TopicNestedDisplayContract>();
+            CreateMap<Topic, TopicBasicDisplayContract>();
 
             CreateMap<User, UserDisplayContract>();
             CreateMap<UserUpdateContract, User>();

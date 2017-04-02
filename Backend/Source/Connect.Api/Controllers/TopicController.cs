@@ -32,7 +32,7 @@ namespace Connect.Api.Controllers
         public IHttpActionResult GetSubTopics(int id)
         {
             var topics = _topicService.GetSubTopics(id);
-            var topicsDisplay = _mapper.Map<IEnumerable<TopicDisplayContract>>(topics);
+            var topicsDisplay = _mapper.Map<IEnumerable<TopicBasicDisplayContract>>(topics);
 
             return Ok(topicsDisplay);
         }

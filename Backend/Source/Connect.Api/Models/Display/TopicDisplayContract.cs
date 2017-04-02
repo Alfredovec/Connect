@@ -8,8 +8,8 @@ namespace Connect.Api.Models.Display
 
         public string Name { get; set; }
 
-        public TopicNestedDisplayContract Parent { get; set; }
+        public TopicBasicDisplayContract Parent { get; set; }
 
-        public IEnumerable<TopicNestedDisplayContract> Children { get; set; }
+        public IEnumerable<TopicBasicDisplayContract> Children { get; set; }
     }
 }

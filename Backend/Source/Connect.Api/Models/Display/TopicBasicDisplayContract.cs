@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Connect.Api.Models.Display
 {
-    public class TopicNestedDisplayContract
+    public class TopicBasicDisplayContract
     {
         public int Id { get; set; }
 

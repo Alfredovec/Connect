@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using AutoMapper;
 using Connect.Domain.Models;
 using Connect.Domain.Services;
 
 namespace Connect.Api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class LanguageController : ApiController
     {
         private readonly ILanguageService _languageService;

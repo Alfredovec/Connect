@@ -1,6 +1,6 @@
-﻿using System.Web.Http;
+﻿using System.Web;
+using System.Web.Http;
 using Swashbuckle.Application;
-using WebActivatorEx;
 using Connect.Api;
 using Connect.Api.Swagger;
 

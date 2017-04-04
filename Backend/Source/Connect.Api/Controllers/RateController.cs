@@ -40,8 +40,8 @@ namespace Connect.Api.Controllers
             
             var displayModel = new
             {
-                OutcomingRates = ratesDisplay.Where(r => r.FromUserId == userId),
                 IncomingRates = ratesDisplay.Where(r => r.ToUserId == userId),
+                OutgoingRates = ratesDisplay.Where(r => r.FromUserId == userId)
             };
 
             return Ok(displayModel);

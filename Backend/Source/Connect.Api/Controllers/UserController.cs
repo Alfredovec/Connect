@@ -40,6 +40,8 @@ namespace Connect.Api.Controllers
         public IHttpActionResult Put(int id, UserUpdateContract user)
         {
             var userDomain = _mapper.Map<User>(user);
+            userDomain.Id = id;
+
             var updatedUser = _userService.Update(userDomain);
             var updatedUserDisplay = _mapper.Map<UserDisplayContract>(updatedUser);
 

@@ -1,10 +1,13 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
 using Connect.Api.Models.Display;
 using Connect.Api.Models.Update;
 using Connect.Domain.Models;
 using Connect.Domain.Services;
+using Swashbuckle.Swagger.Annotations;
 
 namespace Connect.Api.Controllers
 {
@@ -20,17 +23,36 @@ namespace Connect.Api.Controllers
             _mapper = mapper;
         }
 
-        public IHttpActionResult Get(int id)
+        [Route("api/lessons/{lessonId}/rates")]
+        public IHttpActionResult GetLessonRates(int lessonId)
         {
-            var rate = _rateService.Find(id);
-            var rateDisplay = _mapper.Map<RateDisplayContract>(rate);
+            var rates = _rateService.GetLessonRates(lessonId);
+            var ratesDisplay = _mapper.Map<IEnumerable<RateDisplayContract>>(rates);
 
-            return Ok(rateDisplay);
+            return Ok(ratesDisplay);
         }
-        
-        public IHttpActionResult Post(RateUpdateContract rate)
+
+        [Route("api/users/{userId}/rates")]
+        public IHttpActionResult GetUserRates(int userId)
+        {
+            var rates = _rateService.GetUserRates(userId);
+            var ratesDisplay = _mapper.Map<IEnumerable<RateDisplayContract>>(rates).ToList();
+            
+            var displayModel = new
+            {
+                OutcomingRates = ratesDisplay.Where(r => r.FromUserId == userId),
+                IncomingRates = ratesDisplay.Where(r => r.ToUserId == userId),
+            };
+
+            return Ok(displayModel);
+        }
+
+        [Route("api/lessons/{lessonId}/rates")]
+        public IHttpActionResult Put(int lessonId, RateUpdateContract rate)
         {
             var rateDomain = _mapper.Map<Rate>(rate);
+            rate.LessonId = lessonId;
+
             var createdRate = _rateService.Create(rateDomain);
             var createdRateDisplay = _mapper.Map<RateDisplayContract>(createdRate);
 

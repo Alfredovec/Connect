@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Connect.Data.Entities;
 
-namespace Connect.Data.Repositories
+namespace Connect.Data.Repositories.Interfaces
 {
-    public interface IRateRepository : IRepository<RateEntity>
+    public interface ILanguageRepository : IRepository<LanguageEntity>
     {
     }
 }

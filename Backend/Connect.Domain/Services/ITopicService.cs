@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Connect.Domain.Abstract;
 using Connect.Domain.Models;
 
@@ -13,5 +9,7 @@ namespace Connect.Domain.Services
         IEnumerable<Topic> GetSubTopics(int parentTopicId);
 
         Topic Create(string topicName, string parentTopicName);
+
+        IEnumerable<Topic> GetRootTopics();
     }
 }

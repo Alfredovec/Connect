@@ -9,6 +9,28 @@ namespace Connect.Data.Configurations
         {
             ToTable("Lesson");
             HasKey(l => l.Id);
+            Property(l => l.StartDateTime).IsRequired();
+            Property(l => l.FinishDateTime).IsRequired();
+
+            HasRequired(l => l.UserApprentice)
+                .WithMany()
+                .HasForeignKey(l => l.UserApprenticeId)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(l => l.UserMaster)
+                .WithMany()
+                .HasForeignKey(l => l.UserMasterId)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(l => l.Topic)
+                .WithMany()
+                .HasForeignKey(l => l.TopicId)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(l => l.Language)
+                .WithMany()
+                .HasForeignKey(l => l.LanguageId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

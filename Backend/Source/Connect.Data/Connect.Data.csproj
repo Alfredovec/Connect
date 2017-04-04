@@ -50,12 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\LanguageConfiguration.cs" />
     <Compile Include="Configurations\LessonConfiguration.cs" />
     <Compile Include="Configurations\RateConfiguration.cs" />
     <Compile Include="Configurations\TopicConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="ConnectDbContext.cs" />
     <Compile Include="DbContext.cs" />
+    <Compile Include="Entities\LanguageEntity.cs" />
     <Compile Include="Entities\LessonEntity.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\RateEntity.cs" />
@@ -63,10 +65,12 @@
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ILessonRepository.cs" />
-    <Compile Include="Repositories\IRateRepository.cs" />
-    <Compile Include="Repositories\ITopicRepository.cs" />
-    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ILanguageRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ILessonRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRateRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITopicRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
+    <Compile Include="Repositories\LanguageRepository.cs" />
     <Compile Include="Repositories\LessonRepository.cs" />
     <Compile Include="Repositories\RateRepository.cs" />
     <Compile Include="Repositories\TopicRepository.cs" />

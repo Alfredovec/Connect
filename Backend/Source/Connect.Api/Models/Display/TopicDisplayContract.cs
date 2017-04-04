@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Connect.Api.Models.Display.Basic;
 
 namespace Connect.Api.Models.Display
 {

@@ -17,6 +17,7 @@ namespace Connect.Infrastructure.Automapper
                 .PreserveReferences();
 
             CreateMap<User, UserEntity>().ReverseMap();
+            CreateMap<Language, LanguageEntity>().ReverseMap();
         }
     }
 }

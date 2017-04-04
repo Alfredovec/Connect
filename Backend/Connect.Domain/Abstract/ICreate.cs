@@ -2,6 +2,6 @@
 {
     public interface ICreate<T>
     {
-        T Create(T entity);
+        T Create(T domainEntity);
     }
 }

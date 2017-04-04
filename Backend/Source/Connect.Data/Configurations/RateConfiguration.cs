@@ -14,6 +14,21 @@ namespace Connect.Data.Configurations
         {
             ToTable("Rate");
             HasKey(r => r.Id);
+
+            HasRequired(r => r.FromUser)
+                .WithMany()
+                .HasForeignKey(r => r.FromUserId)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(r => r.ToUser)
+                .WithMany()
+                .HasForeignKey(r => r.ToUserId)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(r => r.Lesson)
+                .WithMany()
+                .HasForeignKey(r => r.LessonId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

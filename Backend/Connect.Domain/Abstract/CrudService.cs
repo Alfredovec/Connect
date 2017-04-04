@@ -5,19 +5,19 @@ namespace Connect.Domain.Abstract
 {
     public class CrudService<T, TEntity> : ICrudService<T>
     {
-        private readonly IRepository<TEntity> _topicRepository;
+        private readonly IRepository<TEntity> _repository;
         private readonly IMapper _mapper;
 
-        public CrudService(IRepository<TEntity> topicRepository, IMapper mapper)
+        public CrudService(IRepository<TEntity> repository, IMapper mapper)
         {
-            _topicRepository = topicRepository;
+            _repository = repository;
             _mapper = mapper;
         }
-
+         
         /// <inheritdoc />
         public virtual T Find(int id)
         {
-            var entity = _topicRepository.Find(id);
+            var entity = _repository.Find(id);
             var domainModel = _mapper.Map<T>(entity);
 
             return domainModel;
@@ -27,9 +27,10 @@ namespace Connect.Domain.Abstract
         public virtual T Update(T domainEntity)
         {
             var entity = _mapper.Map<TEntity>(domainEntity);
-            _topicRepository.Edit(entity);
-            _topicRepository.Save();
+            _repository.Edit(entity);
+            _repository.Save();
 
+            _repository.LoadNavigation(entity);
             var updatedDomainEntity = _mapper.Map<T>(entity);
 
             return updatedDomainEntity;
@@ -39,9 +40,10 @@ namespace Connect.Domain.Abstract
         public virtual T Create(T domainEntity)
         {
             var entity = _mapper.Map<TEntity>(domainEntity);
-            _topicRepository.Add(entity);
-            _topicRepository.Save();
+            _repository.Add(entity);
+            _repository.Save();
 
+            _repository.LoadNavigation(entity);
             var createdDomainEntity = _mapper.Map<T>(entity);
 
             return createdDomainEntity;

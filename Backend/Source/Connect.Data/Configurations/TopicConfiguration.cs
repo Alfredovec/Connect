@@ -9,6 +9,8 @@ namespace Connect.Data.Configurations
         {
             ToTable("Topic");
             HasKey(t => t.Id);
+            Property(t => t.Name).IsRequired();
+
             HasOptional(t => t.Parent)
                 .WithMany(t => t.Children)
                 .HasForeignKey(t => t.ParentId)

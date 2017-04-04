@@ -23,9 +23,9 @@ namespace Connect.Api.Controllers
         public IHttpActionResult Get(int id)
         {
             var lesson = _lessonService.Find(id);
-            var lessonViewModel = _mapper.Map<LessonDisplayContract>(lesson);
+            var lessonDisplayContract = _mapper.Map<LessonDisplayContract>(lesson);
 
-            return Ok(lessonViewModel);
+            return Ok(lessonDisplayContract);
         }
 
         public IHttpActionResult Post(LessonUpdateContract lesson)
@@ -33,7 +33,9 @@ namespace Connect.Api.Controllers
             var lessonDomain = _mapper.Map<Lesson>(lesson);
             var createdLesson = _lessonService.Create(lessonDomain);
 
-            return Created($"api/lessons/{createdLesson.Id}", createdLesson);
+            var lessonDisplayContract = _mapper.Map<LessonDisplayContract>(createdLesson);
+
+            return Created($"api/lessons/{createdLesson.Id}", lessonDisplayContract);
         }
         
         public IHttpActionResult Put(int id, LessonUpdateContract lesson)

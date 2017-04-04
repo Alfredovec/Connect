@@ -9,7 +9,6 @@ using Connect.Domain.Services;
 namespace Connect.Api.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [Route("api/lessons/{id}/rate")]
     public class RateController : ApiController
     {
         private readonly IRateService _rateService;
@@ -35,7 +34,7 @@ namespace Connect.Api.Controllers
             var createdRate = _rateService.Create(rateDomain);
             var createdRateDisplay = _mapper.Map<RateDisplayContract>(createdRate);
 
-            return Ok(createdRateDisplay);
+            return Created("", createdRateDisplay);
         }
     }
 }

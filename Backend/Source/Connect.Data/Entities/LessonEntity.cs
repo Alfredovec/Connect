@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 
 namespace Connect.Data.Entities
 {
@@ -6,19 +6,24 @@ namespace Connect.Data.Entities
     {
         public int Id { get; set; }
 
-        // public int UserMasterId { get; set; }
+        public DateTimeOffset StartDateTime { get; set; }
+
+        public DateTimeOffset FinishDateTime { get; set; }
+
+        public int UserMasterId { get; set; }
 
         public int UserApprenticeId { get; set; }
-
+        
         public int TopicId { get; set; }
 
-        [ForeignKey("UserMasterId")]
+        public int LanguageId { get; set; }
+        
         public virtual UserEntity UserMaster { get; set; }
-
-        [ForeignKey("UserApprenticeId")]
+        
         public virtual UserEntity UserApprentice { get; set; }
-
-        [ForeignKey("TopicId")]
+        
         public virtual TopicEntity Topic { get; set; }
+
+        public virtual LanguageEntity Language { get; set; }
     }
 }

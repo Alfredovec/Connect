@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Connect.Data
 {
@@ -46,9 +50,29 @@ namespace Connect.Data
             return _context.Set<T>().Find(keyObjects);
         }
 
+        public void LoadNavigation(T entity)
+        {
+            foreach (var navigationProperty in GetNavigationProperties(entity))
+            {
+                var isEnumerable = typeof(IEnumerable).IsAssignableFrom(navigationProperty.PropertyType);
+                if (isEnumerable)
+                    _context.Entry(entity).Collection(navigationProperty.Name).Load();
+                else
+                    _context.Entry(entity).Reference(navigationProperty.Name).Load();
+            }
+        }
+
         public virtual void Save()
         {
             _context.SaveChanges();
+        }
+
+        private IEnumerable<PropertyInfo> GetNavigationProperties(T entity)
+        {
+            var entityType = entity.GetType();
+            var entitySetElementType = ((IObjectContextAdapter)_context).ObjectContext.CreateObjectSet<T>().EntitySet.ElementType;
+
+            return entitySetElementType.NavigationProperties.Select(navigationProperty => entityType.GetProperty(navigationProperty.Name));
         }
     }
 }

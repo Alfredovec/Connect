@@ -1,5 +1,5 @@
 ﻿using System;
-using Newtonsoft.Json;
+using Connect.Api.Models.Display.Basic;
 
 namespace Connect.Api.Models.Display
 {
@@ -7,8 +7,16 @@ namespace Connect.Api.Models.Display
     {
         public int Id { get; set; }
 
-        public string Subject { get; set; }
+        public string Topic { get; set; }
 
-        public DateTimeOffset Creared { get; set; }
+        public string Language { get; set; }
+
+        public DateTimeOffset StartDateTime { get; set; }
+
+        public DateTimeOffset FinishDateTime { get; set; }
+
+        public UserBasicDisplayContract UserMaster { get; set; }
+
+        public UserBasicDisplayContract UserApprentice { get; set; }
     }
 }

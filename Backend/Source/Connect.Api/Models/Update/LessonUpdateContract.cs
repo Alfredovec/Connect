@@ -8,6 +8,8 @@ namespace Connect.Api.Models.Update
 
         public int UserApprenticeId { get; set; }
 
-        public int SubjectId { get; set; }
+        public int TopicId { get; set; }
+        
+        public int LanguageId { get; set; }
     }
 }

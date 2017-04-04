@@ -15,6 +15,7 @@ namespace Connect.Infrastructure.DI
             builder.RegisterType<RateService>().As<IRateService>();
             builder.RegisterType<TopicService>().As<ITopicService>();
             builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<LanguageService>().As<ILanguageService>();
 
             builder
                 .RegisterGeneric(typeof(CrudService<,>))

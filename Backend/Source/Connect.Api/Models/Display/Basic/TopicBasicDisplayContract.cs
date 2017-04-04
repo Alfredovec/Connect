@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Connect.Api.Models.Display
+﻿namespace Connect.Api.Models.Display.Basic
 {
     public class TopicBasicDisplayContract
     {

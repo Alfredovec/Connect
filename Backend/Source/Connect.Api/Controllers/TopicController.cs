@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
 using Connect.Api.Models.Display;
+using Connect.Api.Models.Display.Basic;
 using Connect.Api.Models.Update;
 using Connect.Domain.Services;
 
@@ -20,6 +21,15 @@ namespace Connect.Api.Controllers
             _mapper = mapper;
         }
 
+        [Route("api/topics/root")]
+        public IHttpActionResult GetRootTopics()
+        {
+            var topics = _topicService.GetRootTopics();
+            var topicsDisplay = _mapper.Map<IEnumerable<TopicBasicDisplayContract>>(topics);
+
+            return Ok(topicsDisplay);
+        }
+
         public IHttpActionResult Get(int id)
         {
             var topic = _topicService.Find(id);
@@ -28,7 +38,7 @@ namespace Connect.Api.Controllers
             return Ok(topicDisplay);
         }
 
-        [Route("api/topics/{id}/sub")]
+        [Route("api/topics/{id}/children")]
         public IHttpActionResult GetSubTopics(int id)
         {
             var topics = _topicService.GetSubTopics(id);
@@ -37,12 +47,13 @@ namespace Connect.Api.Controllers
             return Ok(topicsDisplay);
         }
 
+
         public IHttpActionResult Post(TopicUpdateContract topic)
         {
             var topicDomain = _topicService.Create(topic.Name, topic.ParentName);
             var topicDisplay = _mapper.Map<TopicDisplayContract>(topicDomain);
 
-            return Ok(topicDisplay);
+            return Created("", topicDisplay);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Connect.Api.Models.Display;
+using Connect.Api.Models.Display.Basic;
 using Connect.Api.Models.Update;
 using Connect.Domain.Models;
 
@@ -20,6 +21,15 @@ namespace Connect.Api.Infrastructure.Automapper
 
             CreateMap<User, UserDisplayContract>();
             CreateMap<UserUpdateContract, User>();
+
+            CreateMap<User, UserBasicDisplayContract>()
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Surname == null ? src.Name : $"{src.Name} {src.Surname}"));
+
+            CreateMap<Language, string>()
+                .ConstructUsing(language => language.Name);
+
+            CreateMap<Topic, string>()
+                .ConstructUsing(topic => topic.Name);
         }
     }
 }

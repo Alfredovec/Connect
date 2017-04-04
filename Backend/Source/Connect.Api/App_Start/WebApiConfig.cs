@@ -1,11 +1,9 @@
 ﻿using System.Reflection;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using Autofac;
 using Autofac.Integration.WebApi;
 using AutoMapper;
 using Connect.Infrastructure.DI;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.Application;
 

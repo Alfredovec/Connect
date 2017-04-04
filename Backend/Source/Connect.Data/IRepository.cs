@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Connect.Data
 {
@@ -20,6 +17,8 @@ namespace Connect.Data
         void Edit(T entity);
 
         T Find(params object[] keyObjects);
+
+        void LoadNavigation(T entity);
 
         void Save();
     }

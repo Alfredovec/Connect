@@ -13,16 +13,19 @@ namespace Connect.Data
         {
         }
 
-        // public DbSet<LessonEntity> Lessons { get; set; }
-
+        public DbSet<LessonEntity> Lessons { get; set; }
+        public DbSet<RateEntity> Rates { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
         public DbSet<TopicEntity> Topics { get; set; }
-        
+        public DbSet<LanguageEntity> Languages { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Configurations.Add(new LessonConfiguration());
-            //modelBuilder.Configurations.Add(new RateConfiguration());
+            modelBuilder.Configurations.Add(new LessonConfiguration());
+            modelBuilder.Configurations.Add(new RateConfiguration());
             modelBuilder.Configurations.Add(new TopicConfiguration());
-            //modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new LanguageConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -16,10 +16,33 @@ namespace Connect.Services
 {
     public class UserService : CrudService<User, UserEntity>, IUserService
     {
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+
         /// <inheritdoc />
-        public UserService(IUserRepository repository, IMapper mapper)
-            : base(repository, mapper)
+        public UserService(IUserRepository userRepository, IMapper mapper)
+            : base(userRepository, mapper)
         {
+            _userRepository = userRepository;
+            _mapper = mapper;
+        }
+
+        public void AddToFriends(int firstUserId, int secondUserId)
+        {
+            var firstUser = _userRepository.Find(firstUserId);
+            var secondUser = _userRepository.Find(secondUserId);
+
+            firstUser.Friends.Add(secondUser);
+            secondUser.Friends.Add(firstUser);
+            _userRepository.Save();
+        }
+
+        public IEnumerable<User> GetFriends(int userId)
+        {
+            var friendsEntities = _userRepository.Get(u => u.Friends.Any(f => f.Id == userId)).ToList();
+            var friends = _mapper.Map<IEnumerable<User>>(friendsEntities);
+
+            return friends;
         }
     }
 }

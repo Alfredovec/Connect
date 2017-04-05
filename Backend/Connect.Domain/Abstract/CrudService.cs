@@ -5,19 +5,19 @@ namespace Connect.Domain.Abstract
 {
     public class CrudService<T, TEntity> : ICrudService<T>
     {
-        private readonly IRepository<TEntity> _repository;
+        private readonly IRepository<TEntity> _userRepository;
         private readonly IMapper _mapper;
 
-        public CrudService(IRepository<TEntity> repository, IMapper mapper)
+        public CrudService(IRepository<TEntity> userRepository, IMapper mapper)
         {
-            _repository = repository;
+            _userRepository = userRepository;
             _mapper = mapper;
         }
          
         /// <inheritdoc />
         public virtual T Find(int id)
         {
-            var entity = _repository.Find(id);
+            var entity = _userRepository.Find(id);
             var domainModel = _mapper.Map<T>(entity);
 
             return domainModel;
@@ -27,10 +27,10 @@ namespace Connect.Domain.Abstract
         public virtual T Update(T domainEntity)
         {
             var entity = _mapper.Map<TEntity>(domainEntity);
-            _repository.Edit(entity);
-            _repository.Save();
+            _userRepository.Edit(entity);
+            _userRepository.Save();
 
-            _repository.LoadNavigation(entity);
+            _userRepository.LoadNavigation(entity);
             var updatedDomainEntity = _mapper.Map<T>(entity);
 
             return updatedDomainEntity;
@@ -40,10 +40,10 @@ namespace Connect.Domain.Abstract
         public virtual T Create(T domainEntity)
         {
             var entity = _mapper.Map<TEntity>(domainEntity);
-            _repository.Add(entity);
-            _repository.Save();
+            _userRepository.Add(entity);
+            _userRepository.Save();
 
-            _repository.LoadNavigation(entity);
+            _userRepository.LoadNavigation(entity);
             var createdDomainEntity = _mapper.Map<T>(entity);
 
             return createdDomainEntity;

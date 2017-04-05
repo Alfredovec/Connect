@@ -137,6 +137,7 @@
     <Compile Include="App_Start\AutomapperConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\RateController.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="Models\Update\LessonUpdateContract.cs" />
     <Compile Include="Models\Update\RateUpdateContract.cs" />
     <Compile Include="Models\Update\TopicUpdateContract.cs" />
+    <Compile Include="Models\Update\UserFriendsUpdateContract.cs" />
     <Compile Include="Models\Update\UserUpdateContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Swagger\LowercaseDocumentFilter.cs" />

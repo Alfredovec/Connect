@@ -10,5 +10,8 @@ namespace Connect.Domain.Services
 {
     public interface IUserService : ICrudService<User>
     {
+        void AddToFriends(int firstUserId, int secondUserId);
+
+        IEnumerable<User> GetFriends(int userId);
     }
 }

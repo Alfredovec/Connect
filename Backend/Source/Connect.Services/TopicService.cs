@@ -13,21 +13,21 @@ namespace Connect.Services
 {
     public class TopicService : CrudService<Topic, TopicEntity>, ITopicService
     {
-        private readonly ITopicRepository _repository;
+        private readonly ITopicRepository _topicRepository;
         private readonly IMapper _mapper;
 
         /// <inheritdoc />
-        public TopicService(ITopicRepository repository, IMapper mapper)
-            : base(repository, mapper)
+        public TopicService(ITopicRepository topicRepository, IMapper mapper)
+            : base(topicRepository, mapper)
         {
-            _repository = repository;
+            _topicRepository = topicRepository;
             _mapper = mapper;
         }
 
         /// <inheritdoc />
         public IEnumerable<Topic> GetSubTopics(int parentTopicId)
         {
-            var subTopicsEntities = _repository.Get(t => t.ParentId == parentTopicId).ToList();
+            var subTopicsEntities = _topicRepository.Get(t => t.ParentId == parentTopicId).ToList();
             var subTopics = _mapper.Map<IEnumerable<Topic>>(subTopicsEntities);
 
             return subTopics;
@@ -46,7 +46,7 @@ namespace Connect.Services
 
         private Topic CreateWithParent(string topicName, string parentTopicName)
         {
-            var parentTopicEntity = _repository
+            var parentTopicEntity = _topicRepository
                     .Get(t => t.Name == parentTopicName)
                     .SingleOrDefault();
             
@@ -60,7 +60,7 @@ namespace Connect.Services
 
         public IEnumerable<Topic> GetRootTopics()
         {
-            var rootTopicsEntities = _repository.GetAll().Where(t => t.Parent == null).ToList();
+            var rootTopicsEntities = _topicRepository.GetAll().Where(t => t.Parent == null).ToList();
             var rootTopics = _mapper.Map<IEnumerable<Topic>>(rootTopicsEntities);
 
             return rootTopics;

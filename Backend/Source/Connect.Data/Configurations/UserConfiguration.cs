@@ -10,6 +10,15 @@ namespace Connect.Data.Configurations
             ToTable("User");
             HasKey(u => u.Id);
             Property(u => u.Name).IsRequired();
+
+            HasMany(a => a.Friends)
+                .WithMany()
+                .Map(x =>
+                {
+                    x.MapLeftKey("LeftUserId");
+                    x.MapRightKey("RightUserId");
+                    x.ToTable("Friends");
+                });
         }
     }
 }

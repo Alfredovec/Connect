@@ -5,6 +5,7 @@ using AutoMapper;
 using Connect.Api.Models.Display.Basic;
 using Connect.Api.Models.Update;
 using Connect.Domain.Services;
+using Swashbuckle.Swagger.Annotations;
 
 namespace Connect.Api.Controllers
 {
@@ -19,15 +20,18 @@ namespace Connect.Api.Controllers
             _userService = userService;
             _mapper = mapper;
         }
-        
-        public IHttpActionResult Post(UserFriendsUpdateContract friends)
+
+        [SwaggerOperation(Tags = new[] { "User" })]
+        [Route("api/users/{userId}/friends")]
+        public IHttpActionResult Post(int userId, UserFriendsUpdateContract friend)
         {
-            _userService.AddToFriends(friends.FirstUserId, friends.SecondUserId);
+            _userService.AddToFriends(userId, friend.UserId);
 
             return Ok();
         }
 
         [Route("api/users/{userId}/friends")]
+        [SwaggerOperation(Tags = new[] { "User" })]
         public IHttpActionResult Get(int userId)
         {
             var users = _userService.GetFriends(userId);

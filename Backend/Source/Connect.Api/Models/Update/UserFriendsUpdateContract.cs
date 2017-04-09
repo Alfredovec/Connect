@@ -7,8 +7,6 @@ namespace Connect.Api.Models.Update
 {
     public class UserFriendsUpdateContract
     {
-        public int FirstUserId { get; set; }
-
-        public int SecondUserId { get; set; }
+        public int UserId { get; set; }
     }
 }

@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
+using Connect.Api.Models.Display;
+using Connect.Api.Models.Update;
 using Connect.Domain.Models;
 using Connect.Domain.Services;
+using Swashbuckle.Swagger.Annotations;
 
 namespace Connect.Api.Controllers
 {
@@ -11,12 +15,14 @@ namespace Connect.Api.Controllers
     public class LanguageController : ApiController
     {
         private readonly ILanguageService _languageService;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public LanguageController(ILanguageService languageService, IMapper mapper)
+        public LanguageController(ILanguageService languageService, IMapper mapper, IUserService userService)
         {
             _languageService = languageService;
             _mapper = mapper;
+            _userService = userService;
         }
 
         [Route("api/languages/all")]
@@ -40,6 +46,16 @@ namespace Connect.Api.Controllers
             var language = _languageService.Create(new Language { Name = name });
 
             return Created("", language);
+        }
+
+        [Route("api/users/{userId}/skill")]
+        [SwaggerOperation(Tags = new[] { "User" })]
+        public IHttpActionResult Put(int userId, LanguageSkillUpdateContract skill)
+        {
+            var user = _userService.AddSkill(userId, skill.LanguageId, skill.Level);
+            var userDisplay = _mapper.Map<UserDisplayContract>(user);
+
+            return Ok(userDisplay);
         }
     }
 }

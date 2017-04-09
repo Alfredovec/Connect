@@ -20,8 +20,7 @@ namespace Connect.Api.Controllers
             _userService = userService;
             _mapper = mapper;
         }
-
-        [SwaggerOperation(Tags = new[] { "User" })]
+        
         [Route("api/users/{userId}/friends")]
         public IHttpActionResult Post(int userId, UserFriendsUpdateContract friend)
         {
@@ -31,7 +30,6 @@ namespace Connect.Api.Controllers
         }
 
         [Route("api/users/{userId}/friends")]
-        [SwaggerOperation(Tags = new[] { "User" })]
         public IHttpActionResult Get(int userId)
         {
             var users = _userService.GetFriends(userId);

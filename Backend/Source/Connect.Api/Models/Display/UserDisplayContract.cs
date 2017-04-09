@@ -1,4 +1,7 @@
-﻿namespace Connect.Api.Models.Display
+﻿using System.Collections.Generic;
+using Connect.Api.Models.Display.Basic;
+
+namespace Connect.Api.Models.Display
 {
     public class UserDisplayContract
     {
@@ -9,5 +12,7 @@
         public string Surname { get; set; }
 
         public string AvatarUrl { get; set; }
+
+        public IEnumerable<LanguageBasicDisplayContract> Languages { get; set; }
     }
 }

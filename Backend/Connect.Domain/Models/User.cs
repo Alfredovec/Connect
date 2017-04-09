@@ -15,5 +15,7 @@ namespace Connect.Domain.Models
         public string Surname { get; set; }
 
         public string AvatarUrl { get; set; }
+
+        public IEnumerable<LanguageSkill> Languages { get; set; }
     }
 }

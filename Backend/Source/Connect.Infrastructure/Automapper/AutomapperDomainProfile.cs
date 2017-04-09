@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Connect.Data.Entities;
 using Connect.Domain.Models;
 
@@ -12,12 +11,16 @@ namespace Connect.Infrastructure.Automapper
             CreateMap<Lesson, LessonEntity>().ReverseMap();
             CreateMap<Rate, RateEntity>().ReverseMap();
 
+            CreateMap<User, UserEntity>().ReverseMap();
+            CreateMap<Language, LanguageEntity>().ReverseMap();
+
             CreateMap<Topic, TopicEntity>();
             CreateMap<TopicEntity, Topic>()
                 .PreserveReferences();
 
-            CreateMap<User, UserEntity>().ReverseMap();
-            CreateMap<Language, LanguageEntity>().ReverseMap();
+            CreateMap<LanguageSkill, LanguageSkillEntity>();
+            CreateMap<LanguageSkillEntity, LanguageSkill>()
+                .ForMember(dest => dest.User, opt => opt.Ignore());
         }
     }
 }

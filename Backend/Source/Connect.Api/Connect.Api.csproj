@@ -148,12 +148,14 @@
     </Compile>
     <Compile Include="Infrastructure\Automapper\AutomapperWebProfile.cs" />
     <Compile Include="Infrastructure\Filters\ValidateModelAttribute.cs" />
+    <Compile Include="Models\Display\Basic\LanguageBasicDisplayContract.cs" />
     <Compile Include="Models\Display\LessonDisplayContract.cs" />
     <Compile Include="Models\Display\RateDisplayContract.cs" />
     <Compile Include="Models\Display\TopicDisplayContract.cs" />
     <Compile Include="Models\Display\Basic\TopicBasicDisplayContract.cs" />
     <Compile Include="Models\Display\Basic\UserBasicDisplayContract.cs" />
     <Compile Include="Models\Display\UserDisplayContract.cs" />
+    <Compile Include="Models\Update\LanguageSkillUpdateContract.cs" />
     <Compile Include="Models\Update\LessonUpdateContract.cs" />
     <Compile Include="Models\Update\RateUpdateContract.cs" />
     <Compile Include="Models\Update\TopicUpdateContract.cs" />

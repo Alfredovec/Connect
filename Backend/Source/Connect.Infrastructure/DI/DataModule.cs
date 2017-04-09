@@ -22,6 +22,7 @@ namespace Connect.Infrastructure.DI
             builder.RegisterType<TopicRepository>().As<ITopicRepository>();
             builder.RegisterType<UserRepository>().As<IUserRepository>();
             builder.RegisterType<LanguageRepository>().As<ILanguageRepository>();
+            builder.RegisterType<LanguageSkillRepository>().As<ILanguageSkillRepository>();
         }
     }
 }

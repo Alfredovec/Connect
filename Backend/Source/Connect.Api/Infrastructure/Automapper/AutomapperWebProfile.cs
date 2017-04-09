@@ -30,6 +30,9 @@ namespace Connect.Api.Infrastructure.Automapper
 
             CreateMap<Topic, string>()
                 .ConstructUsing(topic => topic.Name);
+
+            CreateMap<LanguageSkill, LanguageBasicDisplayContract>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Language.Name));
         }
     }
 }

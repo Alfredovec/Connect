@@ -26,6 +26,7 @@ namespace Connect.Data
             modelBuilder.Configurations.Add(new TopicConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new LanguageConfiguration());
+            modelBuilder.Configurations.Add(new LanguageSkillConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

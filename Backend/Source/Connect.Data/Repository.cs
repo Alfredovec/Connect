@@ -62,6 +62,12 @@ namespace Connect.Data
             }
         }
 
+        public void LoadNavigation(IEnumerable<T> entities)
+        {
+            foreach (var entity in entities)
+                LoadNavigation(entity);
+        }
+
         public virtual void Save()
         {
             _context.SaveChanges();

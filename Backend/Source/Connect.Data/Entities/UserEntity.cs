@@ -13,5 +13,7 @@ namespace Connect.Data.Entities
         public string AvatarUrl { get; set; }
 
         public virtual ICollection<UserEntity> Friends { get; set; }
+
+        public virtual ICollection<LanguageSkillEntity> Languages { get; set; }
     }
 }

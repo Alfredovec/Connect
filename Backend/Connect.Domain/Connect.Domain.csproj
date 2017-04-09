@@ -50,6 +50,7 @@
     <Compile Include="Abstract\IUpdate.cs" />
     <Compile Include="Exceptions\ConnectException.cs" />
     <Compile Include="Models\Language.cs" />
+    <Compile Include="Models\LanguageSkill.cs" />
     <Compile Include="Models\Lesson.cs" />
     <Compile Include="Models\Rate.cs" />
     <Compile Include="Models\Topic.cs" />

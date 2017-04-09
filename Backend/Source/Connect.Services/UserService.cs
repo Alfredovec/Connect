@@ -44,5 +44,14 @@ namespace Connect.Services
 
             return friends;
         }
+
+        /// <inheritdoc />
+        public IEnumerable<User> GetAll()
+        {
+            var userEntities = _userRepository.GetAll().ToList();
+            var users = _mapper.Map<IEnumerable<User>>(userEntities);
+
+            return users;
+        }
     }
 }

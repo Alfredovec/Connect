@@ -13,5 +13,7 @@ namespace Connect.Domain.Services
         void AddToFriends(int firstUserId, int secondUserId);
 
         IEnumerable<User> GetFriends(int userId);
+
+        IEnumerable<User> GetAll();
     }
 }

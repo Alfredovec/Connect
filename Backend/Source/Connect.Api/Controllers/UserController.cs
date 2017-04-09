@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
 using Connect.Api.Models.Display;
@@ -18,6 +19,14 @@ namespace Connect.Api.Controllers
         {
             _userService = userService;
             _mapper = mapper;
+        }
+
+        public IHttpActionResult Get()
+        {
+            var users = _userService.GetAll();
+            var usersDisplay = _mapper.Map<IEnumerable<UserDisplayContract>>(users);
+
+            return Ok(usersDisplay);
         }
 
         public IHttpActionResult Get(int id)

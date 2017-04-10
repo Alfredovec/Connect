@@ -101,5 +101,15 @@ namespace Connect.Services
 
             return user;
         }
+
+        public IEnumerable<LanguageSkill> GetSkills(int userId)
+        {
+            var user = _userRepository.Find(userId);
+            var languageSkillEntities = user.Languages.ToList();
+
+            var languageSkills = _mapper.Map<IEnumerable<LanguageSkill>>(languageSkillEntities);
+
+            return languageSkills;
+        }
     }
 }

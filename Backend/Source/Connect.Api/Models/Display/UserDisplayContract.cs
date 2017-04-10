@@ -13,6 +13,6 @@ namespace Connect.Api.Models.Display
 
         public string AvatarUrl { get; set; }
 
-        public IEnumerable<LanguageBasicDisplayContract> Languages { get; set; }
+        public IEnumerable<LanguageSkillBasicDisplayContract> Languages { get; set; }
     }
 }

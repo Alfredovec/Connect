@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
 using Connect.Api.Models.Display;
+using Connect.Api.Models.Display.Basic;
 using Connect.Api.Models.Update;
 using Connect.Domain.Models;
 using Connect.Domain.Services;
@@ -48,12 +49,22 @@ namespace Connect.Api.Controllers
             return Created("", language);
         }
 
-        [Route("api/users/{userId}/skill")]
+        [Route("api/users/{userId}/skills")]
         [SwaggerOperation(Tags = new[] { "User" })]
-        public IHttpActionResult Put(int userId, LanguageSkillUpdateContract skill)
+        public IHttpActionResult PutSkills(int userId, LanguageSkillUpdateContract skill)
         {
             var user = _userService.AddSkill(userId, skill.LanguageId, skill.Level);
             var userDisplay = _mapper.Map<UserDisplayContract>(user);
+
+            return Ok(userDisplay);
+        }
+
+        [Route("api/users/{userId}/skills")]
+        [SwaggerOperation(Tags = new[] { "User" })]
+        public IHttpActionResult GetSkills(int userId)
+        {
+            var user = _userService.GetSkills(userId);
+            var userDisplay = _mapper.Map<IEnumerable<LanguageSkillBasicDisplayContract>>(user);
 
             return Ok(userDisplay);
         }

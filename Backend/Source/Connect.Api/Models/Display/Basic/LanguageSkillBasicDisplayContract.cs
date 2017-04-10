@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Connect.Api.Models.Display.Basic
 {
-    public class LanguageBasicDisplayContract
+    public class LanguageSkillBasicDisplayContract
     {
         public string Name { get; set; }
 

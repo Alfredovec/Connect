@@ -148,7 +148,7 @@
     </Compile>
     <Compile Include="Infrastructure\Automapper\AutomapperWebProfile.cs" />
     <Compile Include="Infrastructure\Filters\ValidateModelAttribute.cs" />
-    <Compile Include="Models\Display\Basic\LanguageBasicDisplayContract.cs" />
+    <Compile Include="Models\Display\Basic\LanguageSkillBasicDisplayContract.cs" />
     <Compile Include="Models\Display\LessonDisplayContract.cs" />
     <Compile Include="Models\Display\RateDisplayContract.cs" />
     <Compile Include="Models\Display\TopicDisplayContract.cs" />

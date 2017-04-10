@@ -8,7 +8,7 @@ namespace Connect.Domain.Services
     {
         IEnumerable<Topic> GetSubTopics(int parentTopicId);
 
-        Topic Create(string topicName, string parentTopicName);
+        Topic Add(Topic topic);
 
         IEnumerable<Topic> GetRootTopics();
     }

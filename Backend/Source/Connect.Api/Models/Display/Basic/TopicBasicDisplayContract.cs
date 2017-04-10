@@ -5,5 +5,11 @@
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public bool Recommended { get; set; }
+
+        public bool Relevant { get; set; }
+
+        public string Url { get; set; }
     }
 }

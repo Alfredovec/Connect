@@ -18,12 +18,12 @@ namespace Connect.Api.Infrastructure.Automapper
 
             CreateMap<Topic, TopicDisplayContract>();
             CreateMap<Topic, TopicBasicDisplayContract>();
+            CreateMap<TopicUpdateContract, Topic>()
+                .ForMember(dest => dest.Parent, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.ParentName) ? null : new Topic { Name = src.ParentName }));
 
             CreateMap<User, UserDisplayContract>();
+            CreateMap<User, UserBasicDisplayContract>();
             CreateMap<UserUpdateContract, User>();
-
-            CreateMap<User, UserBasicDisplayContract>()
-                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Surname == null ? src.Name : $"{src.Name} {src.Surname}"));
 
             CreateMap<Language, string>()
                 .ConstructUsing(language => language.Name);

@@ -9,5 +9,9 @@ namespace Connect.Api.Models.Update
         public string Name { get; set; }
         
         public string ParentName { get; set; }
+
+        public bool Recommended { get; set; }
+
+        public string Url { get; set; }
     }
 }

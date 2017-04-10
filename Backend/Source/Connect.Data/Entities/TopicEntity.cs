@@ -8,6 +8,12 @@ namespace Connect.Data.Entities
 
         public string Name { get; set; }
 
+        public string Url { get; set; }
+
+        public bool Recommended { get; set; }
+
+        public bool Relevant { get; set; }
+
         public int? ParentId { get; set; }
         
         public virtual TopicEntity Parent { get; set; }

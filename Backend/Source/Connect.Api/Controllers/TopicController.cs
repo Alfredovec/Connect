@@ -5,6 +5,7 @@ using AutoMapper;
 using Connect.Api.Models.Display;
 using Connect.Api.Models.Display.Basic;
 using Connect.Api.Models.Update;
+using Connect.Domain.Models;
 using Connect.Domain.Services;
 
 namespace Connect.Api.Controllers
@@ -50,8 +51,9 @@ namespace Connect.Api.Controllers
 
         public IHttpActionResult Post(TopicUpdateContract topic)
         {
-            var topicDomain = _topicService.Create(topic.Name, topic.ParentName);
-            var topicDisplay = _mapper.Map<TopicDisplayContract>(topicDomain);
+            var topicDomain = _mapper.Map<Topic>(topic);
+            var createdTopic = _topicService.Add(topicDomain);
+            var topicDisplay = _mapper.Map<TopicDisplayContract>(createdTopic);
 
             return Created("", topicDisplay);
         }

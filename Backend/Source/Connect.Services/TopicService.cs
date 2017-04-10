@@ -2,7 +2,6 @@
 using System.Linq;
 using AutoMapper;
 using Connect.Data.Entities;
-using Connect.Data.Repositories;
 using Connect.Data.Repositories.Interfaces;
 using Connect.Domain.Abstract;
 using Connect.Domain.Exceptions;
@@ -34,26 +33,24 @@ namespace Connect.Services
         }
 
         /// <inheritdoc />
-        public Topic Create(string topicName, string parentTopicName)
+        public Topic Add(Topic topic)
         {
-            if (parentTopicName != null)
-                return CreateWithParent(topicName, parentTopicName);
-
-            var topic = new Topic { Name = topicName };
+            if (topic.Parent != null)
+                return CreateWithParent(topic);
 
             return Create(topic);
         }
 
-        private Topic CreateWithParent(string topicName, string parentTopicName)
+        private Topic CreateWithParent(Topic topic)
         {
             var parentTopicEntity = _topicRepository
-                    .Get(t => t.Name == parentTopicName)
+                    .Get(t => t.Name == topic.Parent.Name)
                     .SingleOrDefault();
             
             if (parentTopicEntity == null)
-                throw new ConnectException($"Topic {parentTopicName} not found");
-            
-            var topic = new Topic { Name = topicName, ParentId = parentTopicEntity.Id };
+                throw new ConnectException($"Topic {topic.Parent.Name} not found");
+
+            topic.ParentId = parentTopicEntity.Id;
 
             return Create(topic);
         }

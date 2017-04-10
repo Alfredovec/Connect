@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
 using Connect.Api.Models.Display;
+using Connect.Api.Models.Display.Basic;
 using Connect.Api.Models.Update;
 using Connect.Domain.Models;
 using Connect.Domain.Services;
@@ -24,7 +25,7 @@ namespace Connect.Api.Controllers
         public IHttpActionResult Get()
         {
             var users = _userService.GetAll();
-            var usersDisplay = _mapper.Map<IEnumerable<UserDisplayContract>>(users);
+            var usersDisplay = _mapper.Map<IEnumerable<UserBasicDisplayContract>>(users);
 
             return Ok(usersDisplay);
         }

@@ -7,13 +7,13 @@ namespace Connect.Api.Models.Display
     {
         public int Id { get; set; }
 
-        public string Topic { get; set; }
-
         public string Language { get; set; }
 
         public DateTimeOffset StartDateTime { get; set; }
 
         public DateTimeOffset FinishDateTime { get; set; }
+
+        public TopicBasicDisplayContract Topic { get; set; }
 
         public UserBasicDisplayContract UserMaster { get; set; }
 

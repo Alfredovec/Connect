@@ -50,6 +50,7 @@ namespace Connect.Services
             if (parentTopicEntity == null)
                 throw new ConnectException($"Topic {topic.Parent.Name} not found");
 
+            topic.Parent = null;
             topic.ParentId = parentTopicEntity.Id;
 
             return Create(topic);

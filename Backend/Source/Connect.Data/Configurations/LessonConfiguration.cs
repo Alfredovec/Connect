@@ -10,7 +10,7 @@ namespace Connect.Data.Configurations
             ToTable("Lesson");
             HasKey(l => l.Id);
             Property(l => l.StartDateTime).IsRequired();
-            Property(l => l.FinishDateTime).IsRequired();
+            Property(l => l.Duration).IsRequired();
 
             HasRequired(l => l.UserApprentice)
                 .WithMany()

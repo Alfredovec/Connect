@@ -1,10 +1,13 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
 using Connect.Api.Models.Display;
 using Connect.Api.Models.Update;
 using Connect.Domain.Models;
 using Connect.Domain.Services;
+using Swashbuckle.Swagger.Annotations;
 
 namespace Connect.Api.Controllers
 {
@@ -19,7 +22,7 @@ namespace Connect.Api.Controllers
             _lessonService = lessonService;
             _mapper = mapper;
         }
-
+        
         public IHttpActionResult Get(int id)
         {
             var lesson = _lessonService.Find(id);
@@ -47,6 +50,27 @@ namespace Connect.Api.Controllers
             var updatedLessonDisplay = _mapper.Map<LessonDisplayContract>(updatedLesson);
 
             return Ok(updatedLessonDisplay);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetByUser([FromUri]int userId)
+        {
+            var lessons = _lessonService.GetLessons(userId);
+            var lessonsDisplayContracts = _mapper.Map<IEnumerable<LessonDisplayContract>>(lessons).ToList();
+
+            return Ok(new
+            {
+                MasterLessons = lessonsDisplayContracts.Where(l => l.UserMaster.Id == userId),
+                ApprenticeLessons = lessonsDisplayContracts.Where(l => l.UserApprentice.Id == userId)
+            });
+        }
+
+        public IHttpActionResult Put(int lessonId, [FromBody]string roomId)
+        {
+            var lesson = _lessonService.SetRoom(lessonId, roomId);
+            var lessonDisplayContract = _mapper.Map<LessonDisplayContract>(lesson);
+
+            return Ok(lessonDisplayContract);
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
 using Connect.Api.Models.Display;
-using Connect.Api.Models.Display.Basic;
 using Connect.Api.Models.Update;
 using Connect.Domain.Models;
 using Connect.Domain.Services;
@@ -25,12 +23,11 @@ namespace Connect.Api.Controllers
             _mapper = mapper;
             _userService = userService;
         }
-
-        [Route("api/languages/all")]
-        public IHttpActionResult GetList()
+        
+        public IHttpActionResult Get()
         {
             var languages = _languageService.GetAll();
-            var languagesDisplay = _mapper.Map<IEnumerable<string>>(languages);
+            var languagesDisplay = _mapper.Map<IEnumerable<LanguageDisplayContract>>(languages);
 
             return Ok(languagesDisplay);
         }
@@ -38,15 +35,27 @@ namespace Connect.Api.Controllers
         public IHttpActionResult Get(int id)
         {
             var language = _languageService.Find(id);
+            var languageDisplay = _mapper.Map<LanguageDisplayContract>(language);
 
-            return Ok(language);
+            return Ok(languageDisplay);
         }
 
-        public IHttpActionResult Post(string name)
+        [Route("api/topics/simpliest")]
+        public IHttpActionResult GetSimpliestLanguages()
         {
-            var language = _languageService.Create(new Language { Name = name });
+            var languages = _languageService.GetSimpliestLanguages();
+            var languagesDisplay = _mapper.Map<IEnumerable<LanguageDisplayContract>>(languages);
 
-            return Created("", language);
+            return Ok(languagesDisplay);
+        }
+
+        public IHttpActionResult Post(LanguageUpdateContract language)
+        {
+            var languageDomain = _mapper.Map<Language>(language);
+            var createdLanguage = _languageService.Create(languageDomain);
+            var languageDisplay = _mapper.Map<LanguageDisplayContract>(createdLanguage);
+
+            return Created("", languageDisplay);
         }
 
         [Route("api/users/{userId}/skills")]
@@ -64,7 +73,7 @@ namespace Connect.Api.Controllers
         public IHttpActionResult GetSkills(int userId)
         {
             var user = _userService.GetSkills(userId);
-            var userDisplay = _mapper.Map<IEnumerable<LanguageSkillBasicDisplayContract>>(user);
+            var userDisplay = _mapper.Map<IEnumerable<LanguageSkillDisplayContract>>(user);
 
             return Ok(userDisplay);
         }

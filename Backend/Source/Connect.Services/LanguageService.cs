@@ -27,5 +27,14 @@ namespace Connect.Services
 
             return languages;
         }
+
+        /// <inheritdoc />
+        public IEnumerable<Language> GetSimpliestLanguages()
+        {
+            var languages = _languageRepository.GetAll().Where(l => l.Complexity < 5).ToList();
+            var languagesDomain = _mapper.Map<IEnumerable<Language>>(languages);
+
+            return languagesDomain;
+        }
     }
 }

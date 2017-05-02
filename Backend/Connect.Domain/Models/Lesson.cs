@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Connect.Domain.Models
 {
@@ -8,7 +9,9 @@ namespace Connect.Domain.Models
 
         public DateTimeOffset StartDateTime { get; set; }
 
-        public DateTimeOffset FinishDateTime { get; set; }
+        public int Duration { get; set; }
+
+        public string RoomId { get; set; }
 
         public int TopicId { get; set; }
 
@@ -25,5 +28,7 @@ namespace Connect.Domain.Models
         public Language Language { get; set; }
 
         public Topic Topic { get; set; }
+
+        public IEnumerable<Rate> Rates { get; set; }
     }
 }

@@ -12,7 +12,9 @@ namespace Connect.Domain.Models
 
         public bool Relevant { get; set; }
 
-        public string Url { get; set; }
+        public string SourceUrl { get; set; }
+
+        public string ImageUrl { get; set; }
 
         public int? ParentId { get; set; }
 

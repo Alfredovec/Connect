@@ -21,11 +21,15 @@ namespace Connect.Data.Configurations
                 .HasForeignKey(l => l.LanguageId)
                 .WillCascadeOnDelete(false);
 
-            HasRequired(l => l.User)
-                .WithMany(u => u.Languages)
+            HasOptional(l => l.User)
+                .WithMany(u => u.Skills)
                 .HasForeignKey(l => l.UserId)
                 .WillCascadeOnDelete(false);
 
+            HasOptional(l => l.UserWished)
+                .WithMany(u => u.SkillsWished)
+                .HasForeignKey(l => l.UserWishedId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

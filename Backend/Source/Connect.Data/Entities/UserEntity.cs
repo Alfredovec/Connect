@@ -14,6 +14,12 @@ namespace Connect.Data.Entities
 
         public virtual ICollection<UserEntity> Friends { get; set; }
 
-        public virtual ICollection<LanguageSkillEntity> Languages { get; set; }
+        public virtual ICollection<LanguageSkillEntity> Skills { get; set; }
+        
+        public virtual ICollection<LanguageSkillEntity> SkillsWished { get; set; }
+
+        public virtual ICollection<RateEntity> IncomingRates { get; set; }
+
+        public virtual ICollection<RateEntity> OutgoingRates { get; set; }
     }
 }

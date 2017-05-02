@@ -16,6 +16,12 @@ namespace Connect.Domain.Models
 
         public string AvatarUrl { get; set; }
 
-        public IEnumerable<LanguageSkill> Languages { get; set; }
+        public IEnumerable<LanguageSkill> Skills { get; set; }
+
+        public IEnumerable<LanguageSkill> SkillsWished { get; set; }
+
+        public IEnumerable<Rate> IncomingRates { get; set; }
+
+        public IEnumerable<Rate> OutgoingRates { get; set; }
     }
 }

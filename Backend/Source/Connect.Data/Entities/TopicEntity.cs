@@ -8,7 +8,9 @@ namespace Connect.Data.Entities
 
         public string Name { get; set; }
 
-        public string Url { get; set; }
+        public string SourceUrl { get; set; }
+
+        public string ImageUrl { get; set; }
 
         public bool Recommended { get; set; }
 

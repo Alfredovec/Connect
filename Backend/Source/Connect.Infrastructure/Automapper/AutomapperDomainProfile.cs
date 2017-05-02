@@ -8,8 +8,11 @@ namespace Connect.Infrastructure.Automapper
     {
         public AutomapperDomainProfile()
         {
-            CreateMap<Lesson, LessonEntity>().ReverseMap();
-            CreateMap<Rate, RateEntity>().ReverseMap();
+            CreateMap<Lesson, LessonEntity>();
+            CreateMap<LessonEntity, Lesson>();
+
+            CreateMap<Rate, RateEntity>();
+            CreateMap<RateEntity, Rate>();
 
             CreateMap<User, UserEntity>().ReverseMap();
             CreateMap<Language, LanguageEntity>().ReverseMap();
@@ -19,8 +22,7 @@ namespace Connect.Infrastructure.Automapper
                 .PreserveReferences();
 
             CreateMap<LanguageSkill, LanguageSkillEntity>();
-            CreateMap<LanguageSkillEntity, LanguageSkill>()
-                .ForMember(dest => dest.User, opt => opt.Ignore());
+            CreateMap<LanguageSkillEntity, LanguageSkill>();
         }
     }
 }

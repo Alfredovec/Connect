@@ -19,5 +19,7 @@ namespace Connect.Domain.Services
         User AddSkill(int userId, int languageId, string level);
 
         IEnumerable<LanguageSkill> GetSkills(int userId);
+
+        IEnumerable<User> Search(int userId, int languageId, string level);
     }
 }

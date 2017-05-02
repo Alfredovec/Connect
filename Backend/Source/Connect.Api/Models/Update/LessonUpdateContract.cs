@@ -11,5 +11,9 @@ namespace Connect.Api.Models.Update
         public int TopicId { get; set; }
         
         public int LanguageId { get; set; }
+
+        public DateTimeOffset StartDateTime { get; set; }
+
+        public int Duration { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Connect.Data.Entities
 {
@@ -8,7 +9,7 @@ namespace Connect.Data.Entities
 
         public DateTimeOffset StartDateTime { get; set; }
 
-        public DateTimeOffset FinishDateTime { get; set; }
+        public int Duration { get; set; }
 
         public int UserMasterId { get; set; }
 
@@ -17,6 +18,8 @@ namespace Connect.Data.Entities
         public int TopicId { get; set; }
 
         public int LanguageId { get; set; }
+
+        public string RoomId { get; set; }
         
         public virtual UserEntity UserMaster { get; set; }
         
@@ -25,5 +28,7 @@ namespace Connect.Data.Entities
         public virtual TopicEntity Topic { get; set; }
 
         public virtual LanguageEntity Language { get; set; }
+
+        public virtual ICollection<RateEntity> Rates { get; set; }
     }
 }

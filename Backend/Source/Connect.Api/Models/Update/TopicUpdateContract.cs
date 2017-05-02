@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
 
 namespace Connect.Api.Models.Update
 {
@@ -8,10 +7,12 @@ namespace Connect.Api.Models.Update
         [Required]
         public string Name { get; set; }
         
-        public string ParentName { get; set; }
+        public int? ParentId { get; set; }
 
         public bool Recommended { get; set; }
 
-        public string Url { get; set; }
+        public string SourceUrl { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

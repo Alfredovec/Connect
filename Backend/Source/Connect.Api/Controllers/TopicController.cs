@@ -31,6 +31,15 @@ namespace Connect.Api.Controllers
             return Ok(topicsDisplay);
         }
 
+        [Route("api/topics/trending")]
+        public IHttpActionResult GetTrendingTopics()
+        {
+            var topics = _topicService.GetTrendingTopics();
+            var topicsDisplay = _mapper.Map<IEnumerable<TopicBasicDisplayContract>>(topics);
+
+            return Ok(topicsDisplay);
+        }
+
         public IHttpActionResult Get(int id)
         {
             var topic = _topicService.Find(id);

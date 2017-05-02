@@ -11,5 +11,7 @@ namespace Connect.Domain.Services
     public interface ILanguageService : ICrudService<Language>
     {
         IEnumerable<Language> GetAll();
+
+        IEnumerable<Language> GetSimpliestLanguages();
     }
 }

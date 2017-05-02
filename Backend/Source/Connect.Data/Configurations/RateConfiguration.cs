@@ -16,17 +16,17 @@ namespace Connect.Data.Configurations
             HasKey(r => r.Id);
 
             HasRequired(r => r.FromUser)
-                .WithMany()
+                .WithMany(u => u.OutgoingRates)
                 .HasForeignKey(r => r.FromUserId)
                 .WillCascadeOnDelete(false);
 
             HasRequired(r => r.ToUser)
-                .WithMany()
+                .WithMany(u => u.IncomingRates)
                 .HasForeignKey(r => r.ToUserId)
                 .WillCascadeOnDelete(false);
 
             HasRequired(r => r.Lesson)
-                .WithMany()
+                .WithMany(l => l.Rates)
                 .HasForeignKey(r => r.LessonId)
                 .WillCascadeOnDelete(false);
         }

@@ -11,5 +11,7 @@ namespace Connect.Domain.Services
         Topic Add(Topic topic);
 
         IEnumerable<Topic> GetRootTopics();
+
+        IEnumerable<Topic> GetTrendingTopics();
     }
 }

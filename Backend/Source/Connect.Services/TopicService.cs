@@ -35,7 +35,7 @@ namespace Connect.Services
         /// <inheritdoc />
         public Topic Add(Topic topic)
         {
-            if (topic.Parent != null)
+            if (topic.ParentId != null)
                 return CreateWithParent(topic);
 
             return Create(topic);
@@ -43,15 +43,9 @@ namespace Connect.Services
 
         private Topic CreateWithParent(Topic topic)
         {
-            var parentTopicEntity = _topicRepository
-                    .Get(t => t.Name == topic.Parent.Name)
-                    .SingleOrDefault();
-            
+            var parentTopicEntity = _topicRepository.Find(topic.ParentId);
             if (parentTopicEntity == null)
-                throw new ConnectException($"Topic {topic.Parent.Name} not found");
-
-            topic.Parent = null;
-            topic.ParentId = parentTopicEntity.Id;
+                throw new ConnectException($"Topic with id {topic.ParentId} not found");
 
             return Create(topic);
         }
@@ -62,6 +56,15 @@ namespace Connect.Services
             var rootTopics = _mapper.Map<IEnumerable<Topic>>(rootTopicsEntities);
 
             return rootTopics;
+        }
+
+        /// <inheritdoc />
+        public IEnumerable<Topic> GetTrendingTopics()
+        {
+            var trendingTopicsEntities = _topicRepository.GetAll().Where(t => t.Relevant).ToList();
+            var trendingTopics = _mapper.Map<IEnumerable<Topic>>(trendingTopicsEntities);
+
+            return trendingTopics;
         }
     }
 }

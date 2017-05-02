@@ -9,9 +9,11 @@ namespace Connect.Api.Models.Display
 
         public string Language { get; set; }
 
+        public string RoomId { get; set; }
+
         public DateTimeOffset StartDateTime { get; set; }
 
-        public DateTimeOffset FinishDateTime { get; set; }
+        public int Duration { get; set; }
 
         public TopicBasicDisplayContract Topic { get; set; }
 

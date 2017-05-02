@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Connect.Api.Models.Display.Basic;
 
 namespace Connect.Api.Models.Display
 {
@@ -13,6 +12,8 @@ namespace Connect.Api.Models.Display
 
         public string AvatarUrl { get; set; }
 
-        public IEnumerable<LanguageSkillBasicDisplayContract> Languages { get; set; }
+        public IEnumerable<LanguageSkillDisplayContract> Skills { get; set; }
+
+        public IEnumerable<LanguageSkillDisplayContract> SkillsWished { get; set; }
     }
 }

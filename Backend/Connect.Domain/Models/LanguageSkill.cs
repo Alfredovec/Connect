@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Connect.Domain.Models
 {
     public class LanguageSkill
@@ -12,12 +7,16 @@ namespace Connect.Domain.Models
 
         public string Level { get; set; }
 
+        public int RateMaster { get; set; }
+
+        public int RateApprentice { get; set; }
+
         public int LanguageId { get; set; }
 
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
-        public virtual Language Language { get; set; }
+        public int? UserWishedId { get; set; }
 
-        public virtual User User { get; set; }
+        public Language Language { get; set; }
     }
 }

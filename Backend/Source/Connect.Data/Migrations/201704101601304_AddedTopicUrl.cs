@@ -7,12 +7,12 @@ namespace Connect.Data.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Topic", "Url", c => c.String());
+            AddColumn("dbo.Topic", "SourceUrl", c => c.String());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Topic", "Url");
+            DropColumn("dbo.Topic", "SourceUrl");
         }
     }
 }

@@ -13,7 +13,9 @@ namespace Connect.Api.Models.Display
 
         public bool Relevant { get; set; }
 
-        public string Url { get; set; }
+        public string SourceUrl { get; set; }
+
+        public string ImageUrl { get; set; }
 
         public TopicBasicDisplayContract Parent { get; set; }
 

@@ -4,6 +4,7 @@ using System.Web.Http.Cors;
 using AutoMapper;
 using Connect.Api.Models.Display;
 using Connect.Api.Models.Display.Basic;
+using Connect.Api.Models.Search;
 using Connect.Api.Models.Update;
 using Connect.Domain.Models;
 using Connect.Domain.Services;
@@ -37,7 +38,16 @@ namespace Connect.Api.Controllers
 
             return Ok(userDisplay);
         }
-        
+
+        [Route("api/users/{id}/search")]
+        public IHttpActionResult Get(int id, int languageId, string level)
+        {
+            var user = _userService.Search(id, languageId, level);
+            var userDisplay = _mapper.Map<IEnumerable<UserDisplayContract>>(user);
+
+            return Ok(userDisplay);
+        }
+
         public IHttpActionResult Post(UserUpdateContract user)
         {
             var userDomain = _mapper.Map<User>(user);
